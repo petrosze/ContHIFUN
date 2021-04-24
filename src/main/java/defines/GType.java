@@ -1,0 +1,9 @@
+package defines;
+
+public enum GType {
+
+	SIMPLE_GROUPING, 
+	CARTESIAN_GROUPING, 
+	COMPOSITION_GROUPING, 
+	PROJECTION_GROUPING;
+}
