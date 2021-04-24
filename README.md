@@ -1,7 +1,7 @@
 # ContHIFUN
 
 Incremental Continuous Queries Evaluation in HIFUN  <br />
-HIFUN is a high-level query languege for expressing analytic queries over big data sets. In this project, based on HIFUN languege we implement the corresponding algorithms for the incremental evaluation of continuous queries. We translate HIFUN queries to SQL and MapReduce tasks using Spark Streaming and Spark Structured Streaming, supporting also various queries rewriting methods proposed by HIFUN. 
+HIFUN is a high-level query languege for expressing analytic queries over big data sets. In this project, based on HIFUN language we implement the corresponding algorithms for the incremental evaluation of continuous queries. We translate HIFUN queries to SQL and MapReduce tasks using Spark Streaming and Spark Structured Streaming, supporting also various queries rewriting methods proposed by HIFUN. 
 
 Datasets <br />
 A synthetic dataset used split into 10 files and pushed into a queue, treaded as a batch of data and processed like a stream. To distributed the data uniformly among all the cluster works, the data follows uniform distribution and stored in distributed file system. In case of the map reduce execution model the source data set is provided as a single text file and the analysis context used to extract values to formulate queries (in the form of triples as proposed of HIFUN theory), whereas in the case of SQL execution model, the source data set is provided as a structure dataset according to relational schema. 
