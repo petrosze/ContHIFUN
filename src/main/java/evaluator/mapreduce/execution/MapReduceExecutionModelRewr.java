@@ -113,16 +113,16 @@ public class MapReduceExecutionModelRewr implements Serializable{
 				projReducted_l.add(assKVReducted);
 			}
 			
-			//Map<Integer, Query> set = rset.getValue().getRSet();
-			//Query secondQ = getQueryByIndex(set, 1);
-			//Broadcast<Query> query = ssc.sparkContext().broadcast(secondQ);
+			Map<Integer, Query> set = rset.getValue().getRSet();
+			Query secondQ = getQueryByIndex(set, 1);
+			Broadcast<Query> query = ssc.sparkContext().broadcast(secondQ);
 		
-			//JavaPairDStream<Key, ArrayList<MValue>> assocKVPairs = reductedPairs
-			//		.mapToPair(new AKVConstruction(query.getValue(), context.getValue()));
+			JavaPairDStream<Key, ArrayList<MValue>> assocKVPairs = reductedPairs
+					.mapToPair(new AKVConstruction(query.getValue(), context.getValue()));
 			//assocKVPairs.print();
 			
-			//assKVReducted = assocKVPairs
-			//		.reduceByKey(new Reduction(query.getValue()));
+			assKVReducted = assocKVPairs
+					.reduceByKey(new Reduction(query.getValue()));
 			//assKVReducted.print();
 		} 
 		else if(rset.getValue().getRType() == RType.CARTESIAN_PRODUCT_RULE) {
@@ -166,11 +166,10 @@ public class MapReduceExecutionModelRewr implements Serializable{
 			}
 			triggerExecutionL(state_l);
 			
-			//JavaMapWithStateDStream<Key, ArrayList<MValue>, ArrayList<MValue>, Tuple2<Key, ArrayList<MValue>>> state = assKVReducted
-			//		.mapWithState(StateSpec.function(new IcrUpdate(rset.getValue().getFirstQuery())));
+			JavaMapWithStateDStream<Key, ArrayList<MValue>, ArrayList<MValue>, Tuple2<Key, ArrayList<MValue>>> state = assKVReducted
+					.mapWithState(StateSpec.function(new IcrUpdate(rset.getValue().getFirstQuery())));
 			//state.print();
-			//
-			//triggerExecution(state);
+			triggerExecution(state);
 		}
 		else 
 		if(rset.getValue().getRType() == RType.SAME_GROUPING_RULE || rset.getValue().getRType() == RType.SAME_GROUPING_MEASURING_RULE) {
