@@ -95,9 +95,7 @@ public class MapReduceExecutionModelNonRewr {
 					.reduceByKey(new Reduction(bquery.getValue()));
 			reductedPairs.print();
 			
-			//state_l.add(idxQ, reductedPairs.mapWithState(StateSpec.function(new IcrUpdate(bquery.getValue()))));	
-			// print here?
-		
+			state_l.add(idxQ, reductedPairs.mapWithState(StateSpec.function(new IcrUpdate(bquery.getValue()))));	
 		}
 		
 		//triggerExecution(state_l);
