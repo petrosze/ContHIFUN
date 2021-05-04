@@ -60,6 +60,20 @@ Q4 = (g13, Q1, sum) <br />
 Q5 = (g14, Q1, sum) <br />
 Q6 = (g15, Q1, sum) <br />
  <br />
+ 
+Launching the project with spark-submit <br />
+
+Once an experiment configuration is bundled, it can be launched using the bin/spark-summit script and runs on Mesos cluster. This script takes care of setting up the classpath with Spark and its dependencies and can support different cluster configutations and deploy modes.  <br />
+
+ <br />
+spark-submit \ <br />
+--class src.main.java.evaluator.mapreduce.MainRewr \ <br />
+--driver-memory 20G \ <br />
+--executor-memory 200G \ <br />
+--conf spark.speculation=true \ <br />
+--master mesos://zk://clusternode5:2181,clusternode6:2181,clusternode7:2181/mesos \ <br />
+hifun.jar <br />
+
 References. <br /> 
 [1] Spyratos, N.; Sugibuchi, T. A High Level Query Language for Big Data Analytics.  2014. <br />
 [2] Spyratos, N.; Sugibuchi, T.  HIFUN - a high level functional query language for big data analytics. Journal of Intelligent Information Systems 2018,51, 529–555.718 <br />
