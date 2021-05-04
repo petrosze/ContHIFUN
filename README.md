@@ -62,10 +62,8 @@ Q6 = (g15, Q1, sum) <br />
  <br />
  
 Launching the project with spark-submit <br />
-
 Once an experiment configuration is bundled, it can be launched using the bin/spark-summit script and runs on Mesos cluster. This script takes care of setting up the classpath with Spark and its dependencies and can support different cluster configutations and deploy modes.  <br />
 
- <br />
 spark-submit \ <br />
 --class src.main.java.evaluator.mapreduce.MainRewr \ <br />
 --driver-memory 20G \ <br />
